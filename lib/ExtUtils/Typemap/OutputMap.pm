@@ -3,7 +3,9 @@ use 5.006001;
 use strict;
 use warnings;
 our $VERSION = '0.05';
-use Carp qw(croak);
+use ExtUtils::Typemap;
+use ExtUtils::Typemaps::OutputMap;
+our @ISA = qw(ExtUtils::Typemaps::OutputMap);
 
 =head1 NAME
 
@@ -31,49 +33,17 @@ Requires C<xstype> and C<code> parameters.
 
 =cut
 
-sub new {
-  my $prot = shift;
-  my $class = ref($prot)||$prot;
-  my %args = @_;
-
-  if (!ref($prot)) {
-    if (not defined $args{xstype} or not defined $args{code}) {
-      croak("Need xstype and code parameters");
-    }
-  }
-
-  my $self = bless(
-    (ref($prot) ? {%$prot} : {})
-    => $class
-  );
-
-  $self->{xstype} = $args{xstype} if defined $args{xstype};
-  $self->{code} = $args{code} if defined $args{code};
-  $self->{code} =~ s/^(?=\S)/\t/mg;
-
-  return $self;
-}
-
 =head2 code
 
 Returns or sets the OUTPUT mapping code for this entry.
 
 =cut
 
-sub code {
-  $_[0]->{code} = $_[1] if @_ > 1;
-  return $_[0]->{code};
-}
-
 =head2 xstype
 
 Returns the name of the XS type of the OUTPUT map.
 
 =cut
-
-sub xstype {
-  return $_[0]->{xstype};
-}
 
 =head1 SEE ALSO
 
@@ -85,7 +55,7 @@ Steffen Mueller C<<smueller@cpan.org>>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009-2010 Steffen Mueller
+Copyright 2009, 2010, 2011 Steffen Mueller
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

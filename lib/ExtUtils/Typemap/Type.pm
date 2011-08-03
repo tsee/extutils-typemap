@@ -5,6 +5,8 @@ use warnings;
 our $VERSION = '0.05';
 use Carp qw(croak);
 use ExtUtils::Typemap;
+use ExtUtils::Typemaps::Type;
+our @ISA = qw(ExtUtils::Typemaps::Type);
 
 =head1 NAME
 
@@ -35,40 +37,11 @@ Optionally takes C<prototype> parameter.
 
 =cut
 
-sub new {
-  my $prot = shift;
-  my $class = ref($prot)||$prot;
-  my %args = @_;
-
-  if (!ref($prot)) {
-    if (not defined $args{xstype} or not defined $args{ctype}) {
-      croak("Need xstype and ctype parameters");
-    }
-  }
-
-  my $self = bless(
-    (ref($prot) ? {%$prot} : {proto => ''})
-    => $class
-  );
-
-  $self->{xstype} = $args{xstype} if defined $args{xstype};
-  $self->{ctype} = $args{ctype} if defined $args{ctype};
-  $self->{tidy_ctype} = ExtUtils::Typemap::_tidy_type($self->{ctype});
-  $self->{proto} = $args{'prototype'} if defined $args{'prototype'};
-
-  return $self;
-}
-
 =head2 proto
 
 Returns or sets the prototype.
 
 =cut
-
-sub proto {
-  $_[0]->{proto} = $_[1] if @_ > 1;
-  return $_[0]->{proto};
-}
 
 =head2 xstype
 
@@ -76,29 +49,17 @@ Returns the name of the XS type that this C type is associated to.
 
 =cut
 
-sub xstype {
-  return $_[0]->{xstype};
-}
-
 =head2 ctype
 
 Returns the name of the C type as it was set on construction.
 
 =cut
 
-sub ctype {
-  return defined($_[0]->{ctype}) ? $_[0]->{ctype} : $_[0]->{tidy_ctype};
-}
-
 =head2 tidy_ctype
 
 Returns the canonicalized name of the C type.
 
 =cut
-
-sub tidy_ctype {
-  return $_[0]->{tidy_ctype};
-}
 
 =head1 SEE ALSO
 
@@ -110,7 +71,7 @@ Steffen Mueller C<<smueller@cpan.org>>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009-2010 Steffen Mueller
+Copyright 2009, 2010, 2011 Steffen Mueller
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

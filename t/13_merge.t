@@ -7,6 +7,20 @@ use ExtUtils::Typemap;
 use File::Spec;
 use File::Temp;
 
+sub _isa_any_ok {
+  my $obj = shift;
+  my @classes = @_;
+  my $ok = 0;
+  foreach (@classes) {
+    $ok = 1 if $obj->isa($_);
+  }
+  ok($ok, "Object isa_any '".join("', '", @classes)."'");
+  if (not $ok) {
+    diag("Object isa '" . ref($obj) . "', not any of '".join("', '", @classes)."'");
+  }
+  return $ok;
+}
+
 my $datadir = -d 't' ? File::Spec->catdir(qw/t data/) : 'data';
 
 sub slurp {
@@ -24,9 +38,9 @@ my $combined_typemap_file = File::Spec->catfile($datadir, 'combined.typemap');
 
 SCOPE: {
   my $first = ExtUtils::Typemap->new(file => $first_typemap_file);
-  isa_ok($first, 'ExtUtils::Typemap');
+  _isa_any_ok($first, 'ExtUtils::Typemap', 'ExtUtils::Typemaps');
   my $second = ExtUtils::Typemap->new(file => $second_typemap_file);
-  isa_ok($second, 'ExtUtils::Typemap');
+  _isa_any_ok($second, 'ExtUtils::Typemap', 'ExtUtils::Typemaps');
 
   $first->merge(typemap => $second);
 
@@ -35,7 +49,7 @@ SCOPE: {
 
 SCOPE: {
   my $first = ExtUtils::Typemap->new(file => $first_typemap_file);
-  isa_ok($first, 'ExtUtils::Typemap');
+  _isa_any_ok($first, 'ExtUtils::Typemap', 'ExtUtils::Typemaps');
   my $second_str = slurp($second_typemap_file);
 
   $first->add_string(string => $second_str);
