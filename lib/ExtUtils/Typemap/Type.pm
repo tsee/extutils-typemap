@@ -14,56 +14,18 @@ ExtUtils::Typemap::Type - Entry in the TYPEMAP section of a typemap
 
 =head1 SYNOPSIS
 
-  use ExtUtils::Typemap;
-  ...
-  my $type = $typemap->get_type_map('char*');
-  my $input = $typemap->get_input_map($type->xstype);
+Use L<ExtUtils::Typemaps::Type> instead!
 
 =head1 DESCRIPTION
 
-Refer to L<ExtUtils::Typemap> for details.
-Object associates C<ctype> with C<xstype>, which is the index
-into the in- and output mapping tables.
-
-=head1 METHODS
-
-=cut
-
-=head2 new
-
-Requires C<xstype> and C<ctype> parameters.
-
-Optionally takes C<prototype> parameter.
-
-=cut
-
-=head2 proto
-
-Returns or sets the prototype.
-
-=cut
-
-=head2 xstype
-
-Returns the name of the XS type that this C type is associated to.
-
-=cut
-
-=head2 ctype
-
-Returns the name of the C type as it was set on construction.
-
-=cut
-
-=head2 tidy_ctype
-
-Returns the canonicalized name of the C type.
-
-=cut
+Use L<ExtUtils::Typemaps::Type> instead! And find the explanation
+at L<ExtUtils::Typemap>.
 
 =head1 SEE ALSO
 
-L<ExtUtils::Typemap>
+L<ExtUtils::Typemaps>
+
+L<ExtUtils::Typemaps::Type>
 
 =head1 AUTHOR
 

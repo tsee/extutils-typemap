@@ -13,41 +13,18 @@ ExtUtils::Typemap::InputMap - Entry in the INPUT section of a typemap
 
 =head1 SYNOPSIS
 
-  use ExtUtils::Typemap;
-  ...
-  my $input = $typemap->get_input_map('T_NV');
-  my $code = $input->code();
-  $input->code("...");
+Use L<ExtUtils::Typemaps::InputMap> instead!
 
 =head1 DESCRIPTION
 
-Refer to L<ExtUtils::Typemap> for details.
-
-=head1 METHODS
-
-=cut
-
-=head2 new
-
-Requires C<xstype> and C<code> parameters.
-
-=cut
-
-=head2 code
-
-Returns or sets the INPUT mapping code for this entry.
-
-=cut
-
-=head2 xstype
-
-Returns the name of the XS type of the INPUT map.
-
-=cut
+Use L<ExtUtils::Typemaps::InputMap> instead! And find the explanation
+at L<ExtUtils::Typemap>.
 
 =head1 SEE ALSO
 
-L<ExtUtils::Typemap>
+L<ExtUtils::Typemaps>
+
+L<ExtUtils::Typemaps::InputMap>
 
 =head1 AUTHOR
 
@@ -63,4 +40,3 @@ modify it under the same terms as Perl itself.
 =cut
 
 1;
-
