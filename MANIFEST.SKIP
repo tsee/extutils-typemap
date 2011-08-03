@@ -1,6 +1,7 @@
 # Avoid archives of this distribution
 \bExtUtils-Typemap-[\d\.\_]+
 
+\bMYMETA\.(?:json|yml)$
 # Avoid version control files.
 \bRCS\b
 \bCVS\b
