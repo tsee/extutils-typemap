@@ -7,6 +7,7 @@ WriteMakefile(
     NAME              => 'ExtUtils::Typemap',
     VERSION_FROM      => 'lib/ExtUtils/Typemap.pm', # finds $VERSION
     PREREQ_PM         => {
+      'ExtUtils::Typemaps' => '1.00',
       'File::Spec' => '0',
       'Test::More' => '0.44',
       'File::Temp' => '0',
