@@ -2,7 +2,7 @@ package ExtUtils::Typemap::OutputMap;
 use 5.006001;
 use strict;
 use warnings;
-our $VERSION = '0.05';
+our $VERSION = '1.00';
 use ExtUtils::Typemap;
 use ExtUtils::Typemaps::OutputMap;
 our @ISA = qw(ExtUtils::Typemaps::OutputMap);

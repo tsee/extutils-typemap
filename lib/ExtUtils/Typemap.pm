@@ -2,7 +2,7 @@ package ExtUtils::Typemap;
 use 5.006001;
 use strict;
 use warnings;
-our $VERSION = '0.05';
+our $VERSION = '1.00';
 use ExtUtils::Typemaps;
 our @ISA = qw(ExtUtils::Typemaps);
 

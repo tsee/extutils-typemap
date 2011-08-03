@@ -1,5 +1,10 @@
 Revision history for Perl extension ExtUtils::Typemap
 
+1.00 Wed  3 Aug 2011
+  - ExtUtils::Typemap is now only the thinnest of wrappers around
+    ExtUtils::Typemaps (note the plural). Please migrate to using
+    ExtUtils::Typemaps directly. See the docs on why.
+
 0.05 Sat  3 Jul 2010
   - Typemap creation from string
 
